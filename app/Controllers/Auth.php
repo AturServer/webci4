@@ -39,7 +39,7 @@ class Auth extends BaseController
     }
     else{
         echo 'User Not Found';
-        return redirect()->to(base_url('/auth'))->with('info', "Invalid Credential");
+        return redirect()->to(base_url('/auth'))->with('info', "<h3 style='color:red;' >Invalid Username & Password !!! </h3>");
     }
 }
 

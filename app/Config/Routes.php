@@ -34,17 +34,24 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-//REST*/
+//REST API 
 
 $routes->group('api', ['namespace' => 'App\Controllers\API\v1'], function ($routes) {
-$routes->resource('users');
+$routes->resource('users',['filter' => 'authfilter']);
 $routes->resource('contacts');
 $routes->post('dummy', 'Users::dummy');
 });
 
-//skill
+//dashboard
 $routes->group('dashboard', ['filter' => 'authfilter'], function($routes) {
 $routes->get('/', 'Dashboard::index');
+$routes->get('trxdo', 'Dashboard::trxdo');
+$routes->post('add', 'Dashboard::store');
+});
+
+//deliveryOrder
+$routes->group('salesdo', ['filter' => 'authfilter'], function($routes) {
+$routes->get('/', 'Salesdo::index');
 $routes->get('trxdo', 'Dashboard::trxdo');
 $routes->post('add', 'Dashboard::store');
 });
@@ -52,8 +59,7 @@ $routes->post('add', 'Dashboard::store');
 
 
 
-
-//      $routes->resource('api/users');
+// $routes->resource('api/users');
 
 
 

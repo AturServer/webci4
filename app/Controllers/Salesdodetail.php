@@ -4,10 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class Sdo extends BaseController
+class Salesdodetail extends BaseController
 {
     public function index()
     {
         //
+    }
+    public function savedo()
+    {
+    //
     }
 }

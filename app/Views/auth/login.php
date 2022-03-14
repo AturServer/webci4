@@ -32,6 +32,7 @@
             <div class="animate form login_form">
                 <section class="login_content">
                     <form method="post" action="<?=base_url('auth/signin')?>">
+                        <?= csrf_field() ?>
                         <h3 class="text-left">Login</h3>
                         <div class="form-group">
                             <p class="text-left" style="padding:0;margin:0;">Username</p>
@@ -48,7 +49,7 @@
                         <button class="btn btn-primary text-left" name="btnLogin">Login</button>
 
                     </form>
-
+                    <?= session()->getFlashData('info') ?>
                 </section>
             </div>
 

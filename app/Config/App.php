@@ -25,6 +25,9 @@ class App extends BaseConfig
      */
   //  public $baseURL = 'http://localhost:8080/';
     public $baseURL = 'http://localhost/ci419';
+    //for date
+    
+    
     /**
      * --------------------------------------------------------------------------
      * Index File

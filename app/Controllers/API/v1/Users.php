@@ -3,13 +3,17 @@ use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\IncomingRequest;//TEST REQUEST PUT
+
 class Users extends ResourceController
 {
     use ResponseTrait;
     // all users
-    public function index(){
-    $auth='false';
-    if($auth=='login'){
+    
+    public function index($islogin=false){
+
+    $session = \Config\Services::session();
+    $auth=$session->get('islogin');
+    if($auth=='success'){
       $model = new UserModel();  
       $data['users'] = $model->orderBy('id', 'DESC')->findAll();
       return $this->respond($data);
@@ -17,7 +21,8 @@ class Users extends ResourceController
     else{
         $data=array(
             array(
-                'token'=>'Failed!!',
+                'token'=>'Not Found!!',
+                'error' => false,
             )
             );
         return $this->respond($data);
